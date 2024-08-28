@@ -30,7 +30,7 @@ rm -f ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64.deb
 cp -r ./dpkg/quardCRT ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64
 # 使用linuxdeployqt拷贝依赖so库到打包目录
 export QMAKE=$QT_DIR/bin/qmake
-./tools/linuxdeploy-x86_64.AppImage --executable=./build_release/out/quardCRT --appdir=./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt --plugin qt --plugin checkrt
+./tools/linuxdeploy-x86_64.AppImage --executable=./build_release/out/quardCRT --appdir=./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt --plugin=qt
 rm -rf ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/apprun-hooks
 mv ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/usr ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/quardCRT
 mv ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/quardCRT/bin/quardCRT ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/quardCRT/quardCRT
@@ -54,9 +54,6 @@ mkdir -p ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/quardCRT/plugins/Q
 if [ -d "./prebuilt_plugins" ]; then
     cp ./prebuilt_plugins/*.so ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/quardCRT/plugins/QuardCRT/
 fi
-python_stdlib=$(python3 -c "import sysconfig; print(sysconfig.get_path('stdlib'))")
-mkdir -p ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/quardCRT/pythonlib
-cp -r $python_stdlib/../../lib ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64/opt/quardCRT/pythonlib/
 # 打包
 dpkg -b ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64 ./dpkg/quardCRT_Linux_"$QUARDCRT_VERSION"_x86_64.deb
 echo build success!
