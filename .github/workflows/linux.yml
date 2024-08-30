@@ -85,7 +85,7 @@ jobs:
           tar -czvf quardCRT_Linux.tar.gz ./quardCRT_Linux_*_x86_64
 
       - name: Upload build asserts
-        uses: actions/upload-artifact@v4.3.6
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: a10_fw_loader
           path: |
@@ -136,7 +136,7 @@ jobs:
           cp ./AppImageOut/quardCRT_Linux_*.AppImage ./AppImageOut/a10_fw_loader.AppImage
 
       - name: Upload build asserts
-        uses: actions/upload-artifact@v4.3.6
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: a10_fw_loader_AppImage
           path: |

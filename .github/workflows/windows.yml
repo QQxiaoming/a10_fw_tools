@@ -121,14 +121,14 @@ jobs:
           mv ./InnoSetup/quardCRT_Appacker.exe ./InnoSetup/a10_fw_loader_Appacker.exe
           
       - name: Upload a10_fw_loader_zip
-        uses: actions/upload-artifact@v4.3.6
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: a10_fw_loader
           path: |
             ./InnoSetup/build
 
       - name: Upload a10_fw_loader_Appacker 
-        uses: actions/upload-artifact@v4.3.6
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: a10_fw_loader_Appacker
           path: |
